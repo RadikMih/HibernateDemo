@@ -1,6 +1,7 @@
 package hibernate;
 
 import hibernate.models.Employee;
+import hibernate.models.Town;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,6 +12,7 @@ public class ConsoleHibernadeDemoApp {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Town.class)
                 .buildSessionFactory();
 
         Session session = factory.openSession();
