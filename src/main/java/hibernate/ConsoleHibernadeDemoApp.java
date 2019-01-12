@@ -1,5 +1,6 @@
 package hibernate;
 
+import hibernate.models.Address;
 import hibernate.models.Employee;
 import hibernate.models.Town;
 import org.hibernate.Session;
@@ -15,6 +16,7 @@ public class ConsoleHibernadeDemoApp {
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
                 .addAnnotatedClass(Town.class)
+                .addAnnotatedClass(Address.class)
                 .buildSessionFactory();
 
         Session session = factory.openSession();
@@ -36,13 +38,14 @@ public class ConsoleHibernadeDemoApp {
 //        Town t = session.get(Town.class, 34);
 //        session.delete(t);
 
-        List<Town> towns = session.createQuery("FROM Town t WHERE t.name like '%en%'").list();
+//        List<Town> towns = session.createQuery("FROM Town t WHERE t.name like '%en%'").list();
 
-        for (Town t : towns){
-            System.out.println(t.getName());
-        }
+//        for (Town t : towns){
+//            System.out.println(t.getName());
+//        }
 
-
+        int resultCount = session.createQuery("delete from Town where name = 'Pleven'")
+                .executeUpdate();
 
         session.getTransaction().commit();
         session.close();
