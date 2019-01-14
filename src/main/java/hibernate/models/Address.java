@@ -4,7 +4,7 @@ package hibernate.models;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "addresses")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +14,8 @@ public class Address {
     @Column(name = "AddressText")
     private String text;
 
-    
+    @OneToOne(mappedBy = "address")
+    private Employee employee;
 
     public Address() {
     }
@@ -37,5 +38,18 @@ public class Address {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    @Override
+    public String toString() {
+        return text;
     }
 }

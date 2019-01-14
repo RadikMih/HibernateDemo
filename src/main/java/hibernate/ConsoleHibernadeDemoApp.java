@@ -44,8 +44,14 @@ public class ConsoleHibernadeDemoApp {
 //            System.out.println(t.getName());
 //        }
 
-        int resultCount = session.createQuery("delete from Town where name = 'Pleven'")
-                .executeUpdate();
+//        int resultCount = session.createQuery("delete from Town where name = 'Pleven'")
+//                .executeUpdate();
+
+//        Employee e = session.get(Employee.class, 2);
+
+        Address a = session.get(Address.class, 6);
+
+        System.out.println(a.getEmployee());
 
         session.getTransaction().commit();
         session.close();

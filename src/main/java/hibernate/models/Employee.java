@@ -27,6 +27,10 @@ public class Employee {
     @Column(name = "JobTitle")
     private String jobTitle;
 
+    @OneToOne
+    @JoinColumn(name = "AddressId")
+    private Address address;
+
     public Employee(String firstName, String lastName, String jobTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +38,7 @@ public class Employee {
     }
 
     public Employee() {
+
     }
 
     public int getId() {
@@ -67,4 +72,21 @@ public class Employee {
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " " + jobTitle + " " + address;
+    }
+
+
+
+
 }
