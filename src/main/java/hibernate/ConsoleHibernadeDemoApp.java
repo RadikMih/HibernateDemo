@@ -49,9 +49,25 @@ public class ConsoleHibernadeDemoApp {
 
 //        Employee e = session.get(Employee.class, 2);
 
-        Address a = session.get(Address.class, 6);
+//        Address a = session.get(Address.class, 6);
+//        System.out.println(a.getEmployee());
 
-        System.out.println(a.getEmployee());
+//        Town t = session.get(Town.class, 32);
+//        t.getAddresses().add(new Address("31 Alexander Malinov Blvd."));
+//        session.save(t);
+
+//        System.out.println(t.getName());
+//        for (Address a : t.getAddresses()) {
+//            System.out.println("\t" + a.getText() + " " + a.getEmployee().getFirstName());
+//        }
+
+        Address address = session.get(Address.class, 292);
+        System.out.println(address.getText() + " " + address.getTown().getName());
+
+        Town t = session.get(Town.class, 32);
+        for (Address a : t.getAddresses()) {
+            System.out.println("\t" + a.getText());
+        }
 
         session.getTransaction().commit();
         session.close();
