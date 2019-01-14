@@ -11,19 +11,19 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 
-public class ConsoleHibernadeDemoApp {
-    public static void main(String[] args) {
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Employee.class)
-                .addAnnotatedClass(Town.class)
-                .addAnnotatedClass(Address.class)
-                .addAnnotatedClass(Project.class)
-                .buildSessionFactory();
-
-        Session session = factory.openSession();
-        session.beginTransaction();
-//      Employee newEmployee = new Employee("Radik", "Mih", "Junior Dev");
+public class ConsoleHibernateDemoApp {
+//    public static void main(String[] args) {
+//        SessionFactory factory = new Configuration()
+//                .configure("hibernate.cfg.xml")
+//                .addAnnotatedClass(Employee.class)
+//                .addAnnotatedClass(Town.class)
+//                .addAnnotatedClass(Address.class)
+//                .addAnnotatedClass(Project.class)
+//                .buildSessionFactory();
+//
+//        Session session = factory.openSession();
+//        session.beginTransaction();
+//        Employee newEmployee = new Employee("Radik", "Mih", "Junior Dev");
 
 //        session.save(newEmployee);
 //        session.getTransaction().commit();
@@ -78,15 +78,15 @@ public class ConsoleHibernadeDemoApp {
 //            System.out.println(p.getName() + " " + p.getDescription());
 //        }
 
-        Project project = session.get(Project.class, 2);
-        System.out.println(project.getName());
-
-        for (Employee employee : project.getEmployees()){
-            System.out.println("\t" + employee.getFirstName() + " " + employee.getLastName());
-        }
-
-        session.getTransaction().commit();
-        session.close();
-
-    }
+//        Project project = session.get(Project.class, 2);
+//        System.out.println(project.getName());
+//
+//        for (Employee employee : project.getEmployees()){
+//            System.out.println("\t" + employee.getFirstName() + " " + employee.getLastName());
+//        }
+//
+//        session.getTransaction().commit();
+//        session.close();
+//
+//    }
 }
