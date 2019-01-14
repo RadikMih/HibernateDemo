@@ -7,7 +7,10 @@ package hibernate.models;
 */
 
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")  // Mapping to the Table
@@ -30,6 +33,14 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "AddressId")
     private Address address;
+
+    @ManyToMany
+    @JoinTable(
+            name = "employeesprojects",
+            joinColumns = @JoinColumn(name = "EmployeeID"),
+            inverseJoinColumns = @JoinColumn(name = "ProjectID")
+    )
+    private List<Project> projects;
 
     public Employee(String firstName, String lastName, String jobTitle) {
         this.firstName = firstName;
@@ -79,6 +90,14 @@ public class Employee {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     @Override
